@@ -1,0 +1,43 @@
+# Set plot images to a nice size
+options(repr.plot.width = 6, repr.plot.height = 6)
+
+# Load the ggplot2 package
+library(ggplot2)
+
+# Create circle data to plot
+t <- seq(1:44)
+x <- sin(t)
+y <- cos(t)
+df <- data.frame(t, x, y)
+
+# Make a scatter plot of points in a circle
+p <- ggplot(df, aes(x, y))
+circle <- p + geom_point()
+circle
+
+points <- 500
+angle <- pi * (3 - sqrt(5))
+t <- (1:points) * angle
+x <- sin(t)
+y <- cos(t)
+df <- data.frame(t, x, y)
+
+spiral_flower <- ggplot(df,aes(x*t,y*t)) + geom_point()
+spiral_flower
+
+tidy_flower <- ggplot(df,aes(x*t,y*t)) + geom_point(size=8, alpha = 0.5, color="darkgreen")
+tidy_flower
+
+dandelion_flower <- ggplot(df,aes(x*t,y*t)) + geom_point(aes(size=t), alpha = 0.5, color="black",shape = 8) + theme(legend.position = "none")
+dandelion_flower
+
+points <- 1000
+angle <- pi/6
+t <- (1:points) * angle
+x <- sin(t)
+y <- cos(t)
+df <- data.frame(t, x, y)
+
+imaginary_flower  <-ggplot(df,aes(x*t,y*t)) + geom_point(aes(size=t), alpha = 0.5, color="black",shape = 8) + theme(legend.position = "none")
+
+imaginary_flower 
